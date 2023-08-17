@@ -1,4 +1,6 @@
 <?php 
+//commenter
+
 session_start();
 require_once("connexion.php");
 if (isset($_POST['submit'])) {
@@ -12,7 +14,7 @@ if (!empty($_POST['titre']) && !empty($_POST['dat_sortie']) && !empty($_POST['pa
     $sql = ' INSERT INTO livre (titre,dat_sortie,password) 
     VALUES (:titre,:dat_sortie,password)';
     $classe=$bb->prepare($sql);
-    
+
 $classe->bindValue(':titre',$titre,PDO::PARAM_STR);
 $classe->bindValue(':dat_sortie',$dat_sortie,PDO::PARAM_STR_CHAR);
 $classe->bindValue(':password',$password,PDO::PARAM_STR_CHAR);
