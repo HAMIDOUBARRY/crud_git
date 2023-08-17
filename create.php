@@ -6,7 +6,6 @@ if (!empty($_POST['titre']) && !empty($_POST['dat_sortie']) && !empty($_POST['pa
    
     $titre=strip_tags($_POST['titre']);
     $dat_sortie=strip_tags($_POST['dat_sortie']);
-    $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     
 
     
