@@ -2,21 +2,19 @@
 session_start();
 require_once("connexion.php");
 if (isset($_POST['submit'])) {
-if (!empty($_POST['titre']) && !empty($_POST['dat_sortie']) && !empty($_POST['password']) ) {
+if (!empty($_POST['titre']) && !empty($_POST['dat_sortie']) ) {
    
     $titre=strip_tags($_POST['titre']);
     $dat_sortie=strip_tags($_POST['dat_sortie']);
-    $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     
 
     
-    $sql = ' INSERT INTO livre (titre,dat_sortie,password) 
-    VALUES (:titre,:dat_sortie,password)';
+    $sql = ' INSERT INTO livre (titre,dat_sortie) 
+    VALUES (:titre,:dat_sortie)';
     $classe=$bb->prepare($sql);
     
 $classe->bindValue(':titre',$titre,PDO::PARAM_STR);
 $classe->bindValue(':dat_sortie',$dat_sortie,PDO::PARAM_STR_CHAR);
-$classe->bindValue(':password',$password,PDO::PARAM_STR_CHAR);
 
     $classe->execute();
 
@@ -91,9 +89,6 @@ if (isset($_POST['submit'])) {
                   <label for="dat_sortie" >DATE_SORTIE</label>
                   <input type="DATE" id="dat_sortie" name="dat_sortie" class="form-control" >
                     </div>
-                    <div class="form-group">
-                  <label for="password" >PASSWORD</label>
-                  <input type="password" id="password" name="password" class="form-control" >
                     
                     <div class="form-group mt-3">
                      <button type="submit" name="submit"  class="btn btn-primary">AJOUTER</button>
